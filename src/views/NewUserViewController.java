@@ -5,16 +5,22 @@
  */
 package views;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ResourceBundle;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javax.imageio.ImageIO;
 import models.Volunteer;
 
 /**
@@ -34,11 +40,16 @@ public class NewUserViewController implements Initializable {
     private DatePicker birthday;
     @FXML
     private Label errorMessageLabel;
+    @FXML
+    private ImageView imageView;
 
+    private File imageFile;
+    
     /*
     This method read from the scene and try to create a new instance of a volunteer
     If a volunteer was successfully created, its update in the databasa
     */
+    @FXML
     public void saveVolunteerButtonClick() {
         
         try {
@@ -61,6 +72,18 @@ public class NewUserViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         this.errorMessageLabel.setText("");
+        
+        //load default image
+        try {
+            
+            imageFile = new File("./src/images/defaultPerson.png");
+            BufferedImage bufferedImage = ImageIO.read(imageFile);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView.setImage(image);
+            
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }    
     
 }

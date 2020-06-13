@@ -6,6 +6,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -19,10 +20,14 @@
         <URL value="@volunteer.css" />
     </stylesheets>
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="337.0" layoutY="112.0" prefHeight="600.0" prefWidth="800.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="337.0" layoutY="112.0" prefHeight="600.0" prefWidth="800.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Create New User" />
-            <HBox prefHeight="204.0" prefWidth="760.0">
+            <Label text="Create New User">
+               <font>
+                  <Font name="System Bold Italic" size="28.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="268.0" prefWidth="760.0" spacing="20.0">
                <children>
                   <GridPane prefHeight="204.0" prefWidth="360.0">
                     <columnConstraints>
@@ -46,6 +51,7 @@
                         <DatePicker fx:id="birthday" prefHeight="25.0" prefWidth="274.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
+                  <ImageView fx:id="imageView" fitHeight="233.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
             <Label fx:id="errorMessageLabel" text="Label" />
