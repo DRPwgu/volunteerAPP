@@ -33,6 +33,7 @@ public class Volunteer {
     private String phoneNumber;
     private LocalDate birthday;
     private File imageFile;
+    private int volunteerID;
 
     public Volunteer(String firstName, String lastName, String phoneNumber, LocalDate birthday) {
         setFirstName(firstName);
@@ -70,6 +71,20 @@ public class Volunteer {
         return phoneNumber;
     }
 
+    public int getVolunteerID() {
+        return volunteerID;
+    }
+
+    public void setVolunteerID(int volunteerID) {
+        
+        if (volunteerID >= 0) {
+           this.volunteerID = volunteerID; 
+        } else {
+            throw new IllegalArgumentException("VolunteerID must be >= 0");
+        }   
+    }
+
+    
     /**
      * area code   city      house 
      * NXX         -XXX      -XXXX
