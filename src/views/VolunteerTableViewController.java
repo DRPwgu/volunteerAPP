@@ -6,6 +6,7 @@
 package views;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import models.Volunteer;
 
 /**
@@ -42,6 +44,14 @@ public class VolunteerTableViewController implements Initializable {
     private TableColumn<Volunteer, String> phoneCol;
     @FXML
     private TableColumn<Volunteer, LocalDate> birthdayCol;
+    
+    //Change Scenes
+    @FXML
+    private void createNewVolunteerButton(MouseEvent event) throws IOException {
+        
+        SceneChanger sc = new SceneChanger();
+        sc.chageScenes(event, "NewUserView.fxml", "Create New Volunteer");
+    }
     
     /**
      * Initializes the controller class.
@@ -111,4 +121,6 @@ public class VolunteerTableViewController implements Initializable {
                 resultSet.close();
         }
     }
+
+    
 }
