@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="views.NewUserViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.NewUserViewController">
     <stylesheets>
         <URL value="@volunteer.css" />
     </stylesheets>
@@ -64,15 +64,12 @@
                </children>
             </HBox>
             <Label fx:id="errorMessageLabel" text="Label" />
-            <AnchorPane prefHeight="127.0" prefWidth="760.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="760.0" spacing="20.0">
                <children>
-                  <Button layoutX="684.0" layoutY="64.0" mnemonicParsing="false" onMouseClicked="#saveVolunteerButtonClick" text="Save">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#saveVolunteerButtonClick" prefHeight="30.0" prefWidth="60.0" text="Save" />
+                  <Button mnemonicParsing="false" onMouseClicked="#cancelButton" prefHeight="30.0" prefWidth="60.0" text="Cancel" />
                </children>
-            </AnchorPane>
+            </HBox>
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

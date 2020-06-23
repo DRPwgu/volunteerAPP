@@ -109,7 +109,7 @@ public class NewUserViewController implements Initializable {
     If a volunteer was successfully created, its update in the databasa
     */
     @FXML
-    public void saveVolunteerButtonClick() {
+    public void saveVolunteerButtonClick(MouseEvent event) {
         
         try {
             
@@ -125,11 +125,21 @@ public class NewUserViewController implements Initializable {
             errorMessageLabel.setText("");
             volunteer.insertIntoDB();
             
+            SceneChanger sceneChanger = new SceneChanger();
+            sceneChanger.chageScenes(event, "VolunteerTableView.fxml", "All Volunteers");
+ 
             
         } catch (Exception e) {
             
             errorMessageLabel.setText(e.getMessage());
         }
+    }
+    
+    @FXML
+    private void cancelButton(MouseEvent event) throws IOException {
+        
+        SceneChanger sc = new SceneChanger();
+        sc.chageScenes(event, "VolunteerTableView.fxml", "All Volunteers");
     }
     
     /**
@@ -155,8 +165,6 @@ public class NewUserViewController implements Initializable {
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-    }    
-
-    
+    }       
     
 }
