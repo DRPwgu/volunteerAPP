@@ -19,6 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -44,13 +45,31 @@ public class VolunteerTableViewController implements Initializable {
     private TableColumn<Volunteer, String> phoneCol;
     @FXML
     private TableColumn<Volunteer, LocalDate> birthdayCol;
+    @FXML
+    private Button editvolunteerButtton;
     
     //Change Scenes
     @FXML
     private void createNewVolunteerButton(MouseEvent event) throws IOException {
         
         SceneChanger sc = new SceneChanger();
-        sc.chageScenes(event, "NewUserView.fxml", "Create New Volunteer");
+        sc.changeScenes(event, "NewUserView.fxml", "Create New Volunteer");
+    }
+    
+    // Edit volunteer button
+    @FXML
+    private void editVolunteer(MouseEvent event) throws IOException {
+        SceneChanger sc = new SceneChanger();
+        Volunteer volunteer = this.volunteerTableView.getSelectionModel().getSelectedItem();
+        NewUserViewController nuvc = new  NewUserViewController();
+        sc.changeScenes(event, "NewUserViewController", "Edit Volunteer", volunteer, nuvc);
+        
+    }
+    
+    //If user select volunteer to edit enable edit button
+    public void volunteerSelectec(){
+        
+        editvolunteerButtton.setDisable(false);
     }
     
     /**
@@ -58,6 +77,9 @@ public class VolunteerTableViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        //
+        editvolunteerButtton.setDisable(true);
         
         // configure the table columns
         volunteerIDCol.setCellValueFactory(new PropertyValueFactory<>("volunteerID"));
@@ -121,6 +143,8 @@ public class VolunteerTableViewController implements Initializable {
                 resultSet.close();
         }
     }
+
+    
 
     
 }

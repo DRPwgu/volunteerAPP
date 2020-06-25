@@ -32,7 +32,7 @@ import models.Volunteer;
  *
  * @author dashi
  */
-public class NewUserViewController implements Initializable {
+public class NewUserViewController implements Initializable, ControllerClass {
 
     @FXML
     private TextField firstNameTextField;
@@ -49,7 +49,7 @@ public class NewUserViewController implements Initializable {
 
     private File imageFile;
     private boolean imageFileChanged;
-    
+    private Volunteer volunteer;
     
     //File Chooser allow user to change images
     @FXML
@@ -126,7 +126,7 @@ public class NewUserViewController implements Initializable {
             volunteer.insertIntoDB();
             
             SceneChanger sceneChanger = new SceneChanger();
-            sceneChanger.chageScenes(event, "VolunteerTableView.fxml", "All Volunteers");
+            sceneChanger.changeScenes(event, "VolunteerTableView.fxml", "All Volunteers");
  
             
         } catch (Exception e) {
@@ -139,7 +139,7 @@ public class NewUserViewController implements Initializable {
     private void cancelButton(MouseEvent event) throws IOException {
         
         SceneChanger sc = new SceneChanger();
-        sc.chageScenes(event, "VolunteerTableView.fxml", "All Volunteers");
+        sc.changeScenes(event, "VolunteerTableView.fxml", "All Volunteers");
     }
     
     /**
@@ -166,5 +166,10 @@ public class NewUserViewController implements Initializable {
             System.err.println(e.getMessage());
         }
     }       
+
+    @Override
+    public void preloadData(Volunteer volunteer) {
+        this.volunteer = volunteer;
+    }
     
 }
